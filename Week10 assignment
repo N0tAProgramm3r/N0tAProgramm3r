@@ -1,0 +1,42 @@
+package week10;
+
+import java.util.Scanner;
+
+public class Admin {
+    private final String predefinedUser = "Admin"; // Predefined username
+    private final int predefinedPass = 0000;       // Predefined password
+    private Scanner sc = new Scanner(System.in);
+
+    // Method to handle login
+    public boolean login() {
+        boolean isLoggedIn = false;
+
+        while (!isLoggedIn) { // Loop until login is successful
+            // Prompt for username
+            System.out.println("Enter Username:");
+            String inputUser = sc.nextLine();
+
+            // Prompt for password
+            System.out.println("Enter Password:");
+            int inputPass = sc.nextInt();
+            sc.nextLine(); // Consume the leftover newline character
+
+            // Validate credentials
+            if (predefinedUser.equals(inputUser) && predefinedPass == inputPass) {
+                System.out.println("Login Successful");
+                isLoggedIn = true; // Exit the loop
+            } else {
+                System.out.println("Try Again");
+            }
+        }
+
+        return isLoggedIn; // Return true when login is successful
+    }
+
+    // Method to display admin menu
+    public void displayMenu() {
+        System.out.println("1) Add User");
+        System.out.println("2) Delete User");
+        System.out.println("3) Modify User");
+    }
+}
